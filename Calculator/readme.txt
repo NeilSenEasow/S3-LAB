@@ -1,3 +1,7 @@
+Updates
+*Updated code is saved as CalculatorUpdated
+*Improvements were made in the division part
+
 # Simple Calculator
 
 This Java program implements a simple calculator using Java Swing. The calculator allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division.
@@ -29,4 +33,3 @@ This Java program implements a simple calculator using Java Swing. The calculato
 
 - Java Development Kit (JDK) installed on your system
 - Any Java IDE or text editor for code editing (optional)
-
