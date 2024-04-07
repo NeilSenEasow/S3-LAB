@@ -7,8 +7,8 @@ class CalculatorUpdated implements ActionListener {
     JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
     JButton bdec, bequ, bdiv, bmul, badd, bsub, bdel, bclr;
     JFrame frame;
-    int a, b;
-    float result;
+    double a, b; // Changed from int to double
+    double result; // Changed from int to double
     int operation;
 
     CalculatorUpdated() {
@@ -133,36 +133,41 @@ class CalculatorUpdated implements ActionListener {
             field.setText(field.getText().concat("9"));
         }
         if (e.getSource() == badd) {
-            a = Integer.parseInt(field.getText());
+            a = Double.parseDouble(field.getText());
             operation = 1;
             field.setText(""); // +
         }
         if (e.getSource() == bsub) {
-            a = Integer.parseInt(field.getText());
+            a = Double.parseDouble(field.getText());
             operation = 2;
             field.setText(""); // -
         }
         if (e.getSource() == bdiv) {
-            a = Integer.parseInt(field.getText());
+            a = Double.parseDouble(field.getText());
             operation = 3;
             field.setText(""); // /
         }
         if (e.getSource() == bmul) {
-            a = Integer.parseInt(field.getText());
+            a = Double.parseDouble(field.getText());
             operation = 4;
             field.setText(""); // *
         }
         if (e.getSource() == bdel) {
-            field.setText("");
+            String text = field.getText();
+            if (!text.isEmpty())
+                field.setText(text.substring(0, text.length() - 1));
         }
         if (e.getSource() == bclr) {
             field.setText("");
         }
         if (e.getSource() == bdec) {
-            field.setText(field.getText().concat("."));
+            String text = field.getText();
+            if (!text.contains(".")) {
+                field.setText(text.concat("."));
+            }
         }
         if (e.getSource() == bequ) {
-            b = Integer.parseInt(field.getText());
+            b = Double.parseDouble(field.getText());
             field.setText("");
             switch (operation) {
                 case 1:
@@ -173,7 +178,7 @@ class CalculatorUpdated implements ActionListener {
                     break;
                 case 3:
                     if (b != 0) {
-                        result = (float) a / b;
+                        result = a / b;
                     } else {
                         field.setText("Division by zero is not possible");
                         return;
@@ -191,3 +196,4 @@ class CalculatorUpdated implements ActionListener {
         new CalculatorUpdated();
     }
 }
+
